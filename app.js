@@ -1,13 +1,18 @@
 //var Emitter = require("./emitter.js");
-var Emitter = require("events"); //Aquí se inyecta la depencia propia de de NODE JS.
+var Emitter = require("events"); //Aquí se inyecta la dependencia propia de de NODE JS.
+
+let config = require("./config.js");/*Aquí se inyecta la dependencia del archivo que nos va a ayudar
+a evitar errores de typo al momento de referenciar algun valor o función, este archivo contiene el mapeo 
+de greet y jump y garantiza no cometer erroes al momento de referenciarlos ya que después de poner el
+punto, se autocompleta. */
 
 var emtr = new Emitter();
 
-emtr.on("greet",() =>{
+emtr.on(config.events.GREETING,() =>{
     console.log("Somewhere, someone said hello.")
 });
 
-emtr.on("greet",()=>{
+emtr.on(config.events.GREETING,()=>{
     console.log("A greeting ocurred!")
 });
 
@@ -17,7 +22,7 @@ emtr.emit("greet");
 /* Al tener dos funciones llamadas de la misma manera, al intentar que nos devuelva una con ese nombre, ambas funciones son devueltas
 debido a que el nombre aplica y es el mismo para las dos.*/
 
-emtr.on("jump", ()=>{
+emtr.on(config.events.JUMP, ()=>{
     console.log("someone jumped!");
 });
 
