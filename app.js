@@ -1,4 +1,5 @@
-var Emitter = require("./emitter.js");
+//var Emitter = require("./emitter.js");
+var Emitter = require("events"); //Aquí se inyecta la depencia propia de de NODE JS.
 
 var emtr = new Emitter();
 
@@ -20,7 +21,7 @@ emtr.on("jump", ()=>{
     console.log("someone jumped!");
 });
 
-console.log(emtr);
+//console.log(emtr);
 emtr.emit("jump");
 
 /* Al imprimir tal cual "emtr", se devuelve el contenido sin ejecución de funciones, además se pueden apreciar en la impresión, los dos
